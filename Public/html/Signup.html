@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register User</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/custom.css">
+   
+</head>
+
+<body>
+
+    <div>
+        <label>First Name:</label>
+        <input class="home" type="text" id="fn" name="fn" required></br>
+        <label>Last Name:</label>
+        <input class="home" type="text" id="ln" name="ln" required></br>
+        <label>Preferred Username:</label>
+        <input class="home" type="text" id="username" required></br>
+        <label>Password:</label>
+        <input class="home" type="password" id="password" name="password" required></br>
+        Type of user:
+        <select class="home" id="typeOfUser">
+            <option value="moderator">Moderator</option>
+            <option value="voter">Voter</option>
+        </select></br>
+        <p id="accountLoader"></p>
+        </br>
+        <button class="buttonHome" id="register">Register</button>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/signup.js"></script>
+</body>
+
+</html>
