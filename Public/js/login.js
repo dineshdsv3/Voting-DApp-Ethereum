@@ -47,15 +47,15 @@ app = {
 
 document.getElementById('login').addEventListener('click',login);
 
-function login() {
+async function login() {
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
     var userType = document.getElementById('typeOfUser').value;
     var address = app.account.toString();
 
 
-    console.log(username,password,userType,address);
-    $.ajax({
+    // console.log(username,password,userType,address);
+   var loginMessage = await $.ajax({
         type: 'POST',
         url: '/login',
         data: JSON.stringify ({name: username,
@@ -65,8 +65,18 @@ function login() {
         contentType: "application/json",
         dataType: 'json'
     });
-}
+    console.log(loginMessage);
 
+    const message = document.getElementById('message');
+
+    if(loginMessage.message == "userFound" && loginMessage.userType == "moderator") {
+        window.location.pathname = "html/moderatorHome.html"
+    } else if(loginMessage.message == "userFound" && loginMessage.userType == "voter") {
+        window.location.pathname = "html/voter.html"
+    } else if(loginMessage.message == "User not found") {
+        message.innerText = "Username, Password or Account details are incorrect";
+    }
+}
 
 
 

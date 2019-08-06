@@ -47,24 +47,31 @@ app = {
 
 document.getElementById('register').addEventListener('click',register);
 
-function register() {
+async function register() {
 
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
     var userType = document.getElementById('typeOfUser').value;
     var address = app.account.toString();
 
-    console.log(username,password,userType,address);
-    $.ajax({
-        type: 'POST',
-        url: '/register',
-        data: JSON.stringify ({name: username,
-            password: password,
-            userType: userType,
-            address: address}),
-        contentType: "application/json",
-        dataType: 'json'
-    });
+    // console.log(username,password,userType,address);
+    try{
+        const register =   await $.ajax({
+               type: 'POST',
+               url: '/register',
+               data: JSON.stringify ({name: username,
+                   password: password,
+                   userType: userType,
+                   address: address}),
+               contentType: "application/json",
+               dataType: 'json'
+           });
+           var span = document.getElementById('message');
+           span.innerText = register.message;
+           span.style.color = "green";
+    }catch (err) {
+        console.log(`error is ${JSON.stringify(err)}`);
+    }
 
 }
 
