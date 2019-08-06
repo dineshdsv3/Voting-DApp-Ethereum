@@ -73,8 +73,9 @@ async function login() {
         window.location.pathname = "html/moderatorHome.html"
     } else if(loginMessage.message == "userFound" && loginMessage.userType == "voter") {
         window.location.pathname = "html/voter.html"
-    } else if(loginMessage.message == "User not found") {
+    } else {
         message.innerText = "Username, Password or Account details are incorrect";
+        message.style.color = "red";
     }
 }
 
