@@ -7,6 +7,10 @@ var authRouter = require("./routes.js");
 app.use(authRouter);
 
 app.use(express.static("../Public"));
+app.use(express.static("../build"));
+app.use(express.static('../node_modules'));
+
+
 
 app.get('/', (req,res) => {
     res.sendFile(path.resolve("../Public/html/index.html"))

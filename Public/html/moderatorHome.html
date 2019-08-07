@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Moderator</title>
-    </head>
-    <body>
-        <h1>Moderator Page</h1>
-        
-        <p>Hello Admin, You can addcandidates to the voting list here and you ccan start voting here</p>
-        
-    
-    
-    </body>
+
+<head>
+    <title>Moderator</title>
+</head>
+
+<body>
+    <h1>Moderator Page</h1>
+
+    <p>Hello Admin, You can add candidates to the voting list here and you can start voting here</p>
+
+    <button onclick="addcandidates()">Add Candidates</button>
+    <button onclick="addvoters()">Add Voters</button>
+
+
+
+    <script>
+        function addcandidates() {
+            window.location.pathname = '/html/addCandidates.html';
+        }
+
+        function addvoters() {
+            window.location.pathname = '/html/addVoters.html';
+
+        }
+    </script>
+</body>
 
 
 </html>

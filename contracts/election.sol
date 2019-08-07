@@ -9,13 +9,13 @@ contract election {
         uint voteCount;
     }
 
-    mapping(uint => Candidate) public candidates; 
+    Candidate[] public candidates;
 
     uint public candidateCount;
 
     function addCandidate(string memory _name) public {
+        candidates.push(Candidate(candidateCount,_name,0));
         candidateCount++;
-        candidates[candidateCount] = Candidate(candidateCount,_name,0);
     }
 
 }

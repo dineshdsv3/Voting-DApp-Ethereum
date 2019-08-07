@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add Voters</title>
+</head>
+
+<body>
+    <h1>Add Voters Here</h1>
+
+    <input id="candidateName" placeholder="Add Candidate Here">
+    <button id="candidateAdd">Add Voters</button>
+
+    <div>
+        <h4>Candidate List</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id No.</th>
+                    <th>Voter Name</th>
+                </tr>
+            </thead>
+            <tbody id="voterList">
+
+            </tbody>
+        </table>
+        <p id="accountAddress"></p>
+    </div>
+    <p>if adding voters is completed please click on proceed</p>
+    <button onclick="proceed()">Proceed</button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/truffle-contract/dist/truffle-contract.js"></script>
+    <script src="../js/addVoters.js"></script>
+</body>
+
+</html>

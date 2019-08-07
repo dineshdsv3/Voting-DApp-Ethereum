@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add Candidates</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>Add Candidates Here</h1>
+    
+        <input id="candidateName" placeholder="Add Candidate Here">
+        <button id="candidateAdd">Add Candidate</button>
+    
+    <div>
+        <h4>Candidate List</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id No.</th>
+                    <th>Candidate Name</th>
+                </tr>
+            </thead>
+            <tbody id="candList">
+
+            </tbody>
+        </table>
+        <p id="accountAddress"></p>
+    </div>
+    <p>if adding candidates is completed please click on proceed</p>
+    <button onclick="proceed()">Proceed</button>
+
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/truffle-contract@4.0.27/dist/truffle-contract.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <script src="/truffle-contract/dist/truffle-contract.js"></script>
+    <script src="../js/addCandidates.js"></script>
+    <!-- https://cdn.jsdelivr.net/npm/truffle-contract@4.0.27/index.min.js -->
+</body>
+
+</html>
