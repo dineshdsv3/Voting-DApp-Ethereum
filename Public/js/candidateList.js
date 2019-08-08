@@ -68,7 +68,8 @@ app = {
 
        async function startVoting () {
 
-        alert("Candidates Confirmed");
+        await alert("Candidates Confirmed");
+        window.location.pathname = "/html/moderatorHome.html"
         }
         // console.log(candidateCount);
         for(let i=0; i<candidateCount;i++) {

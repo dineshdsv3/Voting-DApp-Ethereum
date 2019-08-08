@@ -8,23 +8,25 @@
 <body>
     <h1>Add Voters Here</h1>
 
-    <input id="candidateName" placeholder="Add Candidate Here">
-    <button id="candidateAdd">Add Voters</button>
+    <input id="voterName" placeholder="Add Voter Name Here">
+    <input id="voterAddress" placeholder = "Add Voter Address Here">
+    <button id="voterAdd">Add Voters</button>
 
     <div>
-        <h4>Candidate List</h4>
+        <h4>Voter List</h4>
         <table>
             <thead>
                 <tr>
                     <th>Id No.</th>
                     <th>Voter Name</th>
+                    <th>Voter Address</th>
                 </tr>
             </thead>
             <tbody id="voterList">
 
             </tbody>
         </table>
-        <p id="accountAddress"></p>
+        <!-- <p id="accountAddress"></p> -->
     </div>
     <p>if adding voters is completed please click on proceed</p>
     <button onclick="proceed()">Proceed</button>

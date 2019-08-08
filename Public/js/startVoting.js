@@ -1,12 +1,12 @@
 app = {
 
-    contracts :{},
+    contracts: {},
 
     init: async () => {
         await app.loadWeb3();
         await app.loadAccount();
         await app.loadContract();
-        await app.showVoters();
+        await app.showList();
     },
 
     loadWeb3: async () => {
@@ -41,7 +41,7 @@ app = {
         }
     },
 
-    loadAccount : async () => {
+    loadAccount: async () => {
         app.account = web3.eth.accounts;
         console.log('the account associated is', app.account);
         $('#accountLoader').append(`Ethereum Account is ${app.account}`);
@@ -58,38 +58,50 @@ app = {
         console.log(app.election);
     },
 
-    showVoters : async () => {
+    showList: async () => {
+        var can = await app.election.candidateCount();
+        var candidateCount = can.toNumber();
+
+        // console.log(candidateCount);
+        for (let i = 0; i < candidateCount; i++) {
+            var candidates = await app.election.candidates(i);
+            var candId = candidates[0].toNumber();
+            var candName = candidates[1];
+            console.log(candId);
+
+            var candidateList = $('#candList');
+
+            var candidateTemplate = `<tr><td>${candId + 1}</td> <td>${candName}</td></tr>`
+            candidateList.append(candidateTemplate);
+        }
 
         var vc = await app.election.voterCount();
         var voterCount = vc.toNumber();
-        
-        document.getElementById('confirm').addEventListener('click',confirm);
 
-        async function confirm () {
-
-          await alert("Voting List Confirmed");
-
-            window.location.pathname = "/html/moderatorHome.html"
-
-    }
-        for(let i=0; i<voterCount; i++) {
+        for (let i = 0; i < voterCount; i++) {
             var voters = await app.election.voters(i);
             var voterId = voters[0].toNumber();
             var voterName = voters[1];
             var voterAddress = voters[2];
-            console.log(voterId,voterName,voterAddress);
+            console.log(voterId, voterName, voterAddress);
             var voterList = $('#voterList');
-            
-            var voterTemplate =  `<tr><td>${voterId}</td> <td>${voterName}</td><td>${voterAddress}</td></tr>`
+
+            var voterTemplate = `<tr><td>${voterId}</td> <td>${voterName}</td><td>${voterAddress}</td></tr>`
             voterList.append(voterTemplate);
-            
+
         }
+
     },
 }
 
+async function startVoting() {
 
-$(()=> {
-    $(window).load(()=>{
+    await alert("Voting Started. Now it will redirected to login page");
+    window.location.pathname = "/html/login.html"
+}
+
+$(() => {
+    $(window).load(() => {
         app.init();
-    }) 
+    })
 })

@@ -58,7 +58,35 @@ app = {
         console.log(app.election);
     },
 
-    addVoters : () => {
+    addVoters : async () => {
+        
+        var vc = await app.election.voterCount();
+        var voterCount = vc.toNumber();
+        console.log(`beforecount ${voterCount}`);
+
+        document.getElementById('voterAdd').addEventListener('click',addVoters);
+        
+        async function addVoters() {
+            var name = document.getElementById('voterName').value;
+            var address = document.getElementById('voterAddress').value;
+            await app.election.addVoter(name,address);
+            window.location.reload();
+            // console.log(`afterCount ${voterCount}`);
+        }
+
+        for(let i=0; i<voterCount; i++) {
+            var voters = await app.election.voters(i);
+            var voterId = voters[0].toNumber();
+            var voterName = voters[1];
+            var voterAddress = voters[2];
+            console.log(voterId,voterName,voterAddress);
+            var voterList = $('#voterList');
+            
+            var voterTemplate =  `<tr><td>${voterId}</td> <td>${voterName}</td><td>${voterAddress}</td></tr>`
+            voterList.append(voterTemplate);
+            
+        }
+        
         
     }
 }
