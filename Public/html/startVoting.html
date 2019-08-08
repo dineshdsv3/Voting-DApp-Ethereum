@@ -2,13 +2,23 @@
 <html>
 
 <head>
-    <title>Voters List</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Start Voting Page</title>
 </head>
 
 <body>
-    <h1>Final Voter List for voting</h1>
-
+    <p>Please check with the final candidate and voter list to start Voting process</p>
+    <table>
+        <thead>
+            <tr>
+                <td>ID No.</td>
+                <td>Candidate Name</td>
+            </tr>
+        </thead>
+        <tbody id="candList">
+            
+        </tbody>
+    </table>
+    
     <table>
         <thead>
             <tr>
@@ -22,11 +32,10 @@
         </tbody>
     </table>
 
-    <button id="confirm">Confirm</button>
-
+    <button onclick="startVoting()">Start Voting</button>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="/truffle-contract/dist/truffle-contract.js"></script>
-     <script src="../js/voterList.js"></script>
+    <script src="../js/startVoting.js"></script>
 </body>
 
 </html>
