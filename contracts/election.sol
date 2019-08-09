@@ -7,9 +7,11 @@ contract election {
     Candidate[] public candidates;
     Voter[] public voters;
     string public winner;
-    
+
     uint public voterCount;
     uint public candidateCount;
+
+    mapping(address => bool) public isVoted;
 
     struct Voter {
         uint id;
@@ -39,5 +41,18 @@ contract election {
 
     function stopVoting() public {
         votingStatus = false;
+    }
+
+    function castVote(uint _candidateId) public {
+        require(votingStatus == true,"Voting is not in progress Ask your admin to start voting");
+
+        require(isVoted[msg.sender] == false,"You have already voted");
+
+        for(uint i = 0; i<=candidateCount; i++) {
+          if(_candidateId == candidates[i].id){
+               candidates[i].voteCount++;
+               isVoted[msg.sender] = true;
+            }
+        }
     }
 }
