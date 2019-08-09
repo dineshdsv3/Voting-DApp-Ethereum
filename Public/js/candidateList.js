@@ -80,7 +80,7 @@ app = {
 
             var candidateList = $('#candList');
             
-            var candidateTemplate =  `<tr><td>${candId+1}</td> <td>${candName}</td></tr>`
+            var candidateTemplate =  `<tr><td>${candId}</td> <td>${candName}</td></tr>`
             candidateList.append(candidateTemplate);
 
         }

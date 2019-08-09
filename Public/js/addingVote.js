@@ -6,8 +6,7 @@ app = {
         await app.loadWeb3();
         await app.loadAccount();
         await app.loadContract();
-        await app.showList();
-        // await app.startVoting();
+        await app.showCandidates();
     },
 
     loadWeb3: async () => {
@@ -45,7 +44,7 @@ app = {
     loadAccount: async () => {
         app.account = web3.eth.accounts;
         console.log('the account associated is', app.account);
-        $('#accountLoader').append(`Ethereum Account is ${app.account}`);
+        $('#accountLoader').append(`Your Account address is ${app.account}`);
     },
 
     loadContract: async () => {
@@ -58,8 +57,11 @@ app = {
         app.election = await app.contracts.election.deployed();
         console.log(app.election);
     },
+   
+    vote : "",
 
-    showList: async () => {
+    showCandidates: async () => {
+
         var can = await app.election.candidateCount();
         var candidateCount = can.toNumber();
 
@@ -68,53 +70,24 @@ app = {
             var candidates = await app.election.candidates(i);
             var candId = candidates[0].toNumber();
             var candName = candidates[1];
-            console.log(candId);
+            var candVoteCount = candidates[2];
+            // console.log(candId);
 
             var candidateList = $('#candList');
 
-            var candidateTemplate = `<tr><td>${candId}</td> <td>${candName}</td></tr>`
+            var candidateTemplate = `<tr><td>${candId}</td> <td>${candName}</td><td><button value=${candId} onclick="app.castVote(${candId})">Vote here</button></td></tr>`
             candidateList.append(candidateTemplate);
+        
         }
-
-        var vc = await app.election.voterCount();
-        var voterCount = vc.toNumber();
-
-        for (let i = 0; i < voterCount; i++) {
-            var voters = await app.election.voters(i);
-            var voterId = voters[0].toNumber();
-            var voterName = voters[1];
-            var voterAddress = voters[2];
-            console.log(voterId, voterName, voterAddress);
-            var voterList = $('#voterList');
-
-            var voterTemplate = `<tr><td>${voterId}</td> <td>${voterName}</td><td>${voterAddress}</td></tr>`
-            voterList.append(voterTemplate);
-
-        }
-
     },
 
-    startVoting: async () => {
-        var votingStatus = await app.election.votingStatus();
-        console.log(`Voting started status before is ${votingStatus}`);
-        await app.election.startVoting();
-        await alert("Voting Started. Now it will redirected to login page");
-        window.location.pathname = "/html/login.html"
-    },
-
-    stopVoting : async() => {
-        var votingStatus = await app.election.votingStatus();
-        console.log(`Voting stopped status before ${votingStatus}`);
-        await app.election.stopVoting();
-        await alert("Voting Stopped. Now it will redirected to results page");
-        window.location.pathname = "/html/results.html"
-
-    }
+    castVote : async (_id) => {
+        await app.election.castVote(_id);
+        await alert("Thanks for voting, NOw you will be returned to your home page.Contact your admin to know results date");
+        window.location.pathname = "/html/";
+    } 
 
 }
-
-document.getElementById('startVoting').addEventListener('click',app.startVoting);
-document.getElementById('stopVoting').addEventListener('click',app.stopVoting);
 
 
 $(() => {

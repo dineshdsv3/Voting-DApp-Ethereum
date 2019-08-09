@@ -1,9 +1,34 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Voter</title>
-    </head>
-    <body>
-        <h1>Voter Page</h1>
-    </body>
+
+<head>
+    <title>Voter Page</title>
+</head>
+
+<body>
+    <h1>Hello welcome to voting page</h1>
+
+    <p id='accountLoader'></p>
+    <p>Please cast your vote below by clicking on vote button of your desired candidate</p>
+    <p>Note: You can't undo your vote once you click vote. So, please avail your vote carefully</p>
+
+    <table>
+        <thead>
+            <tr>
+                <td>ID No.</td>
+                <td>Candidate Name</td>
+                <td>Vote here</td>
+            </tr>
+        </thead>
+        <tbody id="candList">
+
+        </tbody>
+    </table>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/truffle-contract/dist/truffle-contract.js"></script>
+    <script src="../js/addingVote.js"></script>
+</body>
+
 </html>

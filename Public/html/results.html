@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Voting Results Page</title>
+    
+</head>
+
+<body>
+    <h1>Voting Results</h1>
+    <p id="votingStatus"></p>
+    <div id="finalResults">
+        <table>
+            <p>Please check voting results and vote count of each candidate</p>
+            <thead>
+                <tr>
+                    <td>ID No.</td>
+                    <td>Candidate Name</td>
+                    <td>Candidate Vote Count</td>
+                </tr>
+            </thead>
+            <tbody id="candList">
+
+            </tbody>
+        </table>
+
+        <p id="winner"></p>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/truffle-contract/dist/truffle-contract.js"></script>
+    <script src="../js/votingResults.js"></script>
+
+</body>
+
+</html>
