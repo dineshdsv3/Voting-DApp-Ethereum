@@ -4,7 +4,7 @@ pragma solidity 0.5.0;
 contract election {
 
     bool public votingStatus;
-    Candidate[] public candidates;
+    mapping(uint => Candidate) public candidates;
     Voter[] public voters;
     string public winner;
 
@@ -27,7 +27,7 @@ contract election {
 
     function addCandidate(string memory _name) public {
         candidateCount++;
-        candidates.push(Candidate(candidateCount,_name,0));
+        candidates[candidateCount] = (Candidate(candidateCount,_name,0));
     }
 
     function addVoter(string memory _name, address _address) public {
@@ -48,7 +48,7 @@ contract election {
 
         require(isVoted[msg.sender] == false,"You have already voted");
 
-        for(uint i = 0; i<=candidateCount; i++) {
+        for(uint i = 1; i<=candidateCount; i++) {
           if(_candidateId == candidates[i].id){
                candidates[i].voteCount++;
                isVoted[msg.sender] = true;

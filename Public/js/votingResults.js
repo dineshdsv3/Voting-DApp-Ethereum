@@ -79,7 +79,7 @@ app = {
         var candidateCount = can.toNumber();
 
         // console.log(candidateCount);
-        for (let i = 0; i < candidateCount; i++) {
+        for (let i = 1; i <= candidateCount; i++) {
             var candidates = await app.election.candidates(i);
             var candId = candidates[0].toNumber();
             var candName = candidates[1];

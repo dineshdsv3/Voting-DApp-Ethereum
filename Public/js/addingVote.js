@@ -66,7 +66,7 @@ app = {
         var candidateCount = can.toNumber();
 
         // console.log(candidateCount);
-        for (let i = 0; i < candidateCount; i++) {
+        for (let i = 1; i <= candidateCount; i++) {
             var candidates = await app.election.candidates(i);
             var candId = candidates[0].toNumber();
             var candName = candidates[1];
@@ -83,7 +83,7 @@ app = {
 
     castVote : async (_id) => {
         await app.election.castVote(_id);
-        await alert("Thanks for voting, NOw you will be returned to your home page.Contact your admin to know results date");
+        await alert("Thanks for voting, Now you will be returned to your home page.Contact your admin to know results date");
         window.location.pathname = "/html/";
     } 
 
